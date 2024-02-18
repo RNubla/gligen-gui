@@ -5,7 +5,7 @@ import {
 	CheckpointLoaderData,
 	CheckpointLoaderSchema,
 } from "@/api-schema/checkpointLoader";
-import { Select, SelectItem } from "@nextui-org/select";
+import { Select, SelectItem, SelectSection } from "@nextui-org/select";
 import { useEffect, useState } from "react";
 
 export default function ModelSelection() {
@@ -28,19 +28,37 @@ export default function ModelSelection() {
 				}
 			});
 	}, []);
+	let modelTypes: string[] = [];
+	if (data?.CheckpointLoader) {
+		const type: string[] = [];
+		for (const model of data.CheckpointLoader.input.required.ckpt_name[0]) {
+			const t = model.split(/[\\/]/)[0];
+			// if (type.includes(t)) {
+			// 	return;
+			// }
+			type.push(t);
+		}
+		modelTypes = [...new Set(type)];
+	}
+
+	console.log(`type ${modelTypes}`);
 
 	return (
 		<Select
 			label="Select a model"
 			items={data?.CheckpointLoader.input.required.ckpt_name[0]}
 		>
-			{data?.CheckpointLoader?.input?.required?.ckpt_name[0].map(
-				(model, index) => (
-					<SelectItem key={index} value={model}>
-						{model}
-					</SelectItem>
-				),
-			)}
+			{modelTypes.map((type) => {
+				return (
+					<SelectSection showDivider title={type}>
+						{data?.CheckpointLoader.input.required.ckpt_name[0].map((model) => {
+							if (model.includes(type)) {
+								return <SelectItem>{model}</SelectItem>;
+							}
+						})}
+					</SelectSection>
+				);
+			})}
 		</Select>
 	);
 }
