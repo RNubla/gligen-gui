@@ -12,13 +12,14 @@ export default function ModelSelection() {
 	const [data, setData] = useState<CheckpointLoaderData | null>(null);
 
 	useEffect(() => {
-		fetch("http://127.0.0.1:8188/object_info/CheckpointLoader", {
+		// fetch("http://127.0.0.1:8188/object_info/CheckpointLoader", {
+		fetch("/api/object-info", {
 			method: "GET",
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log(`data ${JSON.stringify(data, null, 4)}`);
-				const parsedData = v.safeParse(CheckpointLoaderSchema, data);
+				const parsedData = v.safeParse(CheckpointLoaderSchema, data.data);
 				if (parsedData.success) {
 					setData(parsedData.output);
 				} else {
@@ -33,9 +34,6 @@ export default function ModelSelection() {
 		const type: string[] = [];
 		for (const model of data.CheckpointLoader.input.required.ckpt_name[0]) {
 			const t = model.split(/[\\/]/)[0];
-			// if (type.includes(t)) {
-			// 	return;
-			// }
 			type.push(t);
 		}
 		modelTypes = [...new Set(type)];

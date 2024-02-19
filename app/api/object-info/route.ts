@@ -1,5 +1,5 @@
 export async function GET() {
-    const res = await fetch('http://127.0.0.1:8188/object_info', {
+    const res = await fetch('http://127.0.0.1:8188/object_info/CheckpointLoader', {
         headers: {
             'Content-Type': 'application/json',
         },

@@ -4,6 +4,10 @@ If you would like to show your appreciation for this project,<br>please consider
 <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal donation link"/></a>
 <p>
 
+# ComfyUI
+
+Start comfyui with --enable-cors-header
+
 # GLIGEN GUI
 
 [GLIGEN](https://gligen.github.io/) is a novel way to specify the precise location of objects in text-to-image models. I present here an intuitive GUI that makes it significantly easier to use GLIGEN with ComfyUI.
