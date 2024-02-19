@@ -15,6 +15,7 @@ export default function ModelSelection() {
 		// fetch("http://127.0.0.1:8188/object_info/CheckpointLoader", {
 		fetch("/api/object-info", {
 			method: "GET",
+			cache: "no-store",
 		})
 			.then((res) => res.json())
 			.then((data) => {

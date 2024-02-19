@@ -6,7 +6,7 @@ If you would like to show your appreciation for this project,<br>please consider
 
 # ComfyUI
 
-Start comfyui with --enable-cors-header
+Start comfyui with --enable-cors-header (mac ----force-fp16)
 
 # GLIGEN GUI
 

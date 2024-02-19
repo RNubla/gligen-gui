@@ -23,9 +23,9 @@ async function SubmitPrompt() {
 }
 export default async function Home() {
 	const data = await GetInfo();
-	const p = await SubmitPrompt();
+	// const p = await SubmitPrompt();
 	// console.log(`data ${JSON.stringify(data.LoadImage, null, 4)}`);
-	console.log(`p ${JSON.stringify(p, null, 4)}`);
+	// console.log(`p ${JSON.stringify(p, null, 4)}`);
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
 			<div>{data.LoadImage.display_name}</div>
